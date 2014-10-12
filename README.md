@@ -15,17 +15,9 @@ Other examples:
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Install it yourself from the source dir as:
 
-    gem 'lslock'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install lslock
+    $ gem install pkg/lslock-0.0.1.gem
 
 ## Usage
    lslock [options] -d DIR
