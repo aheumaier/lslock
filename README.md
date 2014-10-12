@@ -4,10 +4,13 @@ This  application shows all PID's which held a lock on files in
 a given directory
 
 Examples:
+
 This command shows all PID which held a lock on files in /tmp
+
     lslock -d /tmp/
 
 Other examples:
+
     lslock --verbose -d /tmp/
 
 ## Installation
