@@ -36,7 +36,9 @@ Or install it yourself as:
 
    -V, --version       Display the version, then exit
 
-   -d, --lock_dir DIR  Output as little as possible, overrides verbose
+   -t, --test          Run a small process writing lock files in given dir
+
+   -t, --lock_dir DIR  Define dir to search in
 
    -V, --verbose       Verbose output
 
