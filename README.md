@@ -33,8 +33,11 @@ Or install it yourself as:
    For help use: lslock -h
 
    -h, --help          Displays help message
+
    -V, --version       Display the version, then exit
+
    -d, --lock_dir DIR  Output as little as possible, overrides verbose
+
    -V, --verbose       Verbose output
 
 ## Contributing
