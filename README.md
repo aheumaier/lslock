@@ -38,7 +38,7 @@ Or install it yourself as:
 
    -t, --test          Run a small process writing lock files in given dir
 
-   -t, --lock_dir DIR  Define dir to search in
+   -d, --lock_dir DIR  Define dir to search in
 
    -V, --verbose       Verbose output
 
