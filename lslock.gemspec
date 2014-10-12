@@ -6,10 +6,10 @@ require 'lslock/version'
 Gem::Specification.new do |spec|
   spec.name          = "lslock"
   spec.version       = Lslock::VERSION
-  spec.authors       = ["TODO: Write your name"]
-  spec.email         = ["TODO: Write your email address"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.authors       = ["A. Heumaier"]
+  spec.email         = ["developer@andreasheuamier.de"]
+  spec.description   = %q{Show all PID's which held a lock on files in a given directory}
+  spec.summary       = %q{Show all PID's which held a lock on files in a given directory}
   spec.homepage      = ""
   spec.license       = "MIT"
 

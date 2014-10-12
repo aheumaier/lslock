@@ -5,31 +5,28 @@ module Lslock
     # This is is the testing part launching 2 processes with file locks for 30 sec
     #
     def initialize
+      print  'Daemon called ' if $DEBUG
       @global_pids = []
-      @test_dir = ARGV[0]
-      raise if ARGV[0].length == 0
-      ensure_temp_dir
+      ensure_dir $LOCK_DIR
+      self.run
     end
 
 
     # open a pidfile with exclusve lock and hold it for 30 sec
     def write_pid_file pid
-      File.open( @test_dir+'/'+pid.to_s, File::RDWR|File::CREAT, 0644) do |f|
+      @global_pids << pid.to_s
+      puts 'Writing lock file to ' + $LOCK_DIR+'/testlock_'+pid.to_s if $DEBUG
+      File.open( $LOCK_DIR+'/testlock_'+pid.to_s, File::RDWR|File::CREAT, 0644) do |f|
         f.flock(File::LOCK_EX)
         f.write(pid)
         f.flush
-        sleep(30)
+        sleep(15)
       end
+      puts 'Removing lock file ' + $LOCK_DIR+'/testlock_'+pid.to_s if $DEBUG
+      FileUtils.remove $LOCK_DIR+'/testlock_'+pid.to_s
     end
 
-    def cleanup
-      @global_pids.each do |p|
-        Process.kill "TERM", p
-        Process.wait p
-      end
-    end
-
-    def start
+    def run
       begin
        # poor mans daemonizer
         3.times do
@@ -39,14 +36,8 @@ module Lslock
           end
         end
 
-        # make shure we are clean again
-        cleanup
-
-      rescue
-        # If WE FAIL KILL IT ANYWAY
-        cleanup
-        puts 'ERROR: directory path as argument required'
-        puts 'Example: ./lslock.rb /tmp/'
+      rescue StandardError=>e
+        puts "Error: #{e}"
         exit(1)
       end
     end
